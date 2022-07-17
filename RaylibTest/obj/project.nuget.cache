@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "ZLRHEHIik5SzF6attIlTrCgy8PES2zeaUoZ/NTlbSRiMEaTgeWPzV4QjkTW1p81cim/6+h3MFiKGYmK0gfjpgw==",
+  "success": true,
+  "projectFilePath": "/Users/eliasstepanik/RiderProjects/RaylibTest/RaylibTest/RaylibTest.csproj",
+  "expectedPackageFiles": [
+    "/Users/eliasstepanik/.nuget/packages/raylib-cs/4.0.0.1/raylib-cs.4.0.0.1.nupkg.sha512",
+    "/Users/eliasstepanik/.nuget/packages/system.numerics.vectors/4.5.0/system.numerics.vectors.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
