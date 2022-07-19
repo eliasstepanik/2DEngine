@@ -1,7 +1,8 @@
 using System.Numerics;
 using Raylib_cs;
+using RaylibTest.Support;
 
-namespace RaylibTest;
+namespace RaylibTest.Support;
 
 public class Window
 {
@@ -9,15 +10,19 @@ public class Window
     protected int Height { get; set; }
     protected string Title { get; set; }
     protected int TargetFps { get; set; }
+
+    public Camera2D Camera;
     
     private List<GameObject> gameObjects = new List<GameObject>();
+    private List<UiObject> uiObjects = new List<UiObject>();
     
-    public Window(int width, int height, string title, int targetFps)
+    public Window(int width, int height, string title, int targetFps, Camera2D camera)
     {
         Width = width;
         Height = height;
         Title = title;
         TargetFps = targetFps;
+        Camera = camera;
     }
 
     public virtual void Start()
@@ -25,29 +30,40 @@ public class Window
         Raylib.InitWindow(Width, Height, Title);
         Raylib.SetTargetFPS(TargetFps);
         Raylib.SetWindowMinSize(Width, Height);
-        while (!Raylib.WindowShouldClose())
-        {
-            Raylib.BeginDrawing();
-            Raylib.ClearBackground(Color.WHITE);
-            Update();
-            Raylib.EndDrawing();
-        }
     }
     
     public virtual void Update()
     {
-        foreach (var gameObject in gameObjects)
+        Parallel.ForEach(gameObjects, gameObject =>
         {
             gameObject.Draw();
-        }
+        });
+    }
+    
+    public virtual void UpdateUi()
+    {
+        Parallel.ForEach(uiObjects, uiObject =>
+        {
+            uiObject.Draw();
+        });
     }
     
     public virtual void RegisterGameObject(GameObject gameObject)
     {
         gameObjects.Add(gameObject);
     }
+    
+    public virtual void UnregisterGameObject(GameObject gameObject)
+    {
+        gameObjects.Remove(gameObject);
+    }
+    
+    public virtual void RegisterUiObject(UiObject uiObject)
+    {
+        uiObjects.Add(uiObject);
+    }
 
-    public virtual void Stop()
+    public virtual void Close()
     {
         Raylib.CloseWindow();
     }

@@ -1,6 +1,6 @@
 using System.Numerics;
 
-namespace RaylibTest;
+namespace RaylibTest.Support;
 
 public class GameObject
 {
