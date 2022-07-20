@@ -44,20 +44,5 @@ public class Rectangle : GameObject
         return Math.Tan((position.Y / position.X));
 
     }
-    
-    public double DirectionTo(Circle other)
-    {
-        Vector2 otherPosition = other.Position;
-        Vector2 position = Position;
-        
-        
-        //α = arccos[(xa * xb + ya * yb) / (√(xa2 + ya2) * √(xb2 + yb2))]
 
-
-        return Math.Atan((position.X * otherPosition.X + position.Y * otherPosition.Y) /
-                         (Math.Sqrt(Math.Pow(position.X, 2) + Math.Pow(position.Y, 2)) *
-                          Math.Sqrt(Math.Pow(other.Position.X, 2) + Math.Pow(other.Position.Y, 2))));
-
-    }
-    
 }

@@ -34,18 +34,18 @@ public class Window
     
     public virtual void Update()
     {
-        Parallel.ForEach(gameObjects, gameObject =>
+        foreach (var gameObject in gameObjects)
         {
             gameObject.Draw();
-        });
+        }
     }
     
     public virtual void UpdateUi()
     {
-        Parallel.ForEach(uiObjects, uiObject =>
+        foreach (var uiObject in uiObjects)
         {
             uiObject.Draw();
-        });
+        }
     }
     
     public virtual void RegisterGameObject(GameObject gameObject)
